@@ -3,9 +3,9 @@ zookeeper1:
     container_name: zookeeper1
     environment:
         - ZOOKEEPER_ID=1
-        - ZOOKEEPER_SERVER_1=10.148.0.2
-        - ZOOKEEPER_SERVER_2=10.148.0.3
-        - ZOOKEEPER_SERVER_3=10.148.0.4
+        - ZOOKEEPER_SERVER_1={ipAddress1}
+        - ZOOKEEPER_SERVER_2={ipAddress2}
+        - ZOOKEEPER_SERVER_3={ipAddress3}
         - ZOOKEEPER_CLIENT_PORT=2181
     ports:
         - 2181:2181
@@ -18,9 +18,9 @@ zookeeper2:
     container_name: zookeeper2
     environment:
         - ZOOKEEPER_ID=2
-        - ZOOKEEPER_SERVER_1=10.148.0.2
-        - ZOOKEEPER_SERVER_2=10.148.0.3
-        - ZOOKEEPER_SERVER_3=10.148.0.4
+        - ZOOKEEPER_SERVER_1={ipAddress1}
+        - ZOOKEEPER_SERVER_2={ipAddress2}
+        - ZOOKEEPER_SERVER_3={ipAddress3}
         - ZOOKEEPER_CLIENT_PORT=2181
     ports:
         - 2181:2181
@@ -33,9 +33,9 @@ zookeeper3:
     container_name: zookeeper3
     environment:
         - ZOOKEEPER_ID=3
-        - ZOOKEEPER_SERVER_1=10.148.0.2
-        - ZOOKEEPER_SERVER_2=10.148.0.3
-        - ZOOKEEPER_SERVER_3=10.148.0.4
+        - ZOOKEEPER_SERVER_1={ipAddress1}
+        - ZOOKEEPER_SERVER_2={ipAddress2}
+        - ZOOKEEPER_SERVER_3={ipAddress3}
         - ZOOKEEPER_CLIENT_PORT=2181
     ports:
         - 2181:2181
@@ -48,8 +48,8 @@ kafka1:
     container_name: kafka1
     environment:
         - KAFKA_ADVERTISED_PORT=9092
-        - KAFKA_ADVERTISED_HOST_NAME=10.148.0.2
-        - KAFKA_ZOOKEEPER_CONNECT=10.148.0.2:2181,10.148.0.3:2181,10.148.0.4:2181
+        - KAFKA_ADVERTISED_HOST_NAME={ipAddress1}
+        - KAFKA_ZOOKEEPER_CONNECT={ipAddress1}:2181,{ipAddress2}:2181,{ipAddress3}:2181
         - KAFKA_LOG_RETENTION_HOURS=4
         - KAFKA_LOG_RETENTION_BYTES=1000000000
     ports:
@@ -61,8 +61,8 @@ kafka2:
     container_name: kafka2
     environment:
         - KAFKA_ADVERTISED_PORT=9092
-        - KAFKA_ADVERTISED_HOST_NAME=10.148.0.3
-        - KAFKA_ZOOKEEPER_CONNECT=10.148.0.2:2181,10.148.0.3:2181,10.148.0.4:2181
+        - KAFKA_ADVERTISED_HOST_NAME={ipAddress2}
+        - KAFKA_ZOOKEEPER_CONNECT={ipAddress1}:2181,{ipAddress2}:2181,{ipAddress3}:2181
         - KAFKA_LOG_RETENTION_HOURS=4
         - KAFKA_LOG_RETENTION_BYTES=1000000000
     ports:
@@ -74,8 +74,8 @@ kafka3:
     container_name: kafka3
     environment:
         - KAFKA_ADVERTISED_PORT=9092
-        - KAFKA_ADVERTISED_HOST_NAME=10.148.0.4
-        - KAFKA_ZOOKEEPER_CONNECT=10.148.0.2:2181,10.148.0.3:2181,10.148.0.4:2181
+        - KAFKA_ADVERTISED_HOST_NAME={ipAddress3}
+        - KAFKA_ZOOKEEPER_CONNECT={ipAddress1}:2181,{ipAddress2}:2181,{ipAddress3}:2181
         - KAFKA_LOG_RETENTION_HOURS=4
         - KAFKA_LOG_RETENTION_BYTES=1000000000
     ports:
